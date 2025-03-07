@@ -22,6 +22,7 @@ class Downloader:
         
         self.file_paths = []
 
+        # is_malware = 1 because benign samples are not in S3
         for family in self.families:
             query = f"""
             SELECT sha256 FROM meta
@@ -71,7 +72,7 @@ class Downloader:
             print(f"   {family}: {download_counts[family]} files downloaded")
         print(f"   Total Downloads: {sum(download_counts.values())}\n")
 
-        # Save failed downloads to a log file
+        # Print number of failed downloads
         if failed_downloads:
             print(f" {len(failed_downloads)} downloads failed")
 
