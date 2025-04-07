@@ -75,7 +75,7 @@ def process_binaries_by_family(input_folder, output_folder, png_folder):
                 if not png_saved:
                     png_path = os.path.join(png_folder, f"{family}.png")
                     cv2.imwrite(png_path, image)
-                    print(f"🖼️ Saved sample PNG for {family}: {png_path}")
+                    print(f"Saved sample PNG for {family}: {png_path}")
                     png_saved = True
 
         progress_bar.close()
@@ -83,7 +83,7 @@ def process_binaries_by_family(input_folder, output_folder, png_folder):
         if family_images:
             npz_path = os.path.join(output_folder, f"{family}.npz")
             np.savez_compressed(npz_path, images=np.array(family_images, dtype=object), filenames=family_filenames)
-            print(f"✅ Saved {len(family_images)} images for {family} in {npz_path}")
+            print(f"Saved {len(family_images)} images for {family} in {npz_path}")
 
         # **Clear memory before moving to the next family**
         del family_images, family_filenames

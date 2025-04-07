@@ -6,7 +6,7 @@ from data_loader import get_dataloaders
 from model import MalwareCNN
 
 if __name__ == '__main__':
-    # ✅ Detect CUDA
+    # Detect CUDA
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"🔹 Using device: {device}")
 
@@ -17,10 +17,10 @@ if __name__ == '__main__':
     checkpoint_dir = "checkpoints"
     os.makedirs(checkpoint_dir, exist_ok=True)
 
-    # ✅ Load dataset with device parameter
+    # Load dataset with device parameter
     train_loader, test_loader = get_dataloaders("data/images", batch_size=batch_size, device=device)
 
-    # ✅ Initialize model & move to GPU
+    # Initialize model & move to GPU
     num_classes = len(os.listdir("data/images"))
     model = MalwareCNN(num_classes, device=device)
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
         total_loss = 0
 
         for images, labels in train_loader:
-            images, labels = images.to(device), labels.to(device)  # ✅ Move batch to GPU
+            images, labels = images.to(device), labels.to(device)  # Move batch to GPU
             optimizer.zero_grad()
             outputs = model(images)
             loss = criterion(outputs, labels)

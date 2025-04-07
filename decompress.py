@@ -28,4 +28,4 @@ for npz_file in tqdm(os.listdir(npz_folder), desc="Processing Families"):
             
     # Delete old .npz file after extraction
     os.remove(npz_path)
-    print(f"✅ Extracted {len(images)} images from {npz_file} and deleted the original .npz")
+    print(f"Extracted {len(images)} images from {npz_file} and deleted the original .npz")
